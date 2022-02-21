@@ -1,0 +1,50 @@
+@use './palette.scss';
+@use '../../src/Application.scss';
+
+
+// region reset
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    font-family: "Lato Light";
+}
+// endregion
+
+
+// region fonts
+@font-face {
+    font-family: "JetBrainsMono Light";
+    src: url(../fonts/jetbrains_mono/JetBrainsMono-Light.woff2);
+}
+
+@font-face {
+    font-family: "Lato Light";
+    src: url(../fonts/lato/Lato-Light.ttf);
+}
+
+@font-face {
+    font-family: "OpenSans Light";
+    src: url(../fonts/opensans/OpenSans-Light.ttf);
+}
+// endregion
+
+
+// region scrollbar
+::-webkit-scrollbar {
+    width: 0.7rem;
+    height: 0.7rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e5e5e5;
+    // think it looks cooler as square
+    //border-radius: 0px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+// endregion
