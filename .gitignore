@@ -1,0 +1,10 @@
+# IDE related files
+/.idea
+/.vscode
+
+# dependencies
+/node_modules
+
+# temporarily used for releases
+/packages/DIST
+/SIESTA_DIST

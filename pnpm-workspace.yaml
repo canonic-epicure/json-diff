@@ -1,0 +1,6 @@
+packages:
+  - 'packages/jsondiff.dev'
+  - 'packages/siesta/packages/siesta'
+  - 'packages/siesta/packages/chained-iterator'
+  - 'packages/siesta/packages/typescript-mixin-class'
+  - 'packages/siesta/packages/chronograph'

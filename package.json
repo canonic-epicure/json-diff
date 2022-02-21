@@ -1,0 +1,13 @@
+{
+    "name": "jsondiff-monorepo",
+    "private": true,
+    "description": "Monorepo for JSONDIFF.dev website",
+    "type": "module",
+    "pnpm": {
+    },
+    "engines": {
+        "pnpm": ">=6"
+    },
+    "scripts": {
+    }
+}
