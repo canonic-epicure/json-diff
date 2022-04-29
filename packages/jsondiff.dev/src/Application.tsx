@@ -1,6 +1,9 @@
 import { calculate, field } from "@bryntum/chronograph/src/replica2/Entity.js"
 import { ChronoGraphJSX } from "@bryntum/siesta/src/chronograph-jsx/ChronoGraphJSX.js"
 import { Component } from "@bryntum/siesta/src/chronograph-jsx/Component.js"
+import { compareDeepDiff } from "@bryntum/siesta/src/compare_deep/DeepDiff.js"
+import { JsonDeepDiffComponent } from "@bryntum/siesta/src/compare_deep/JsonDeepDiffComponent.js"
+import { buffer }  from "@bryntum/siesta/src/util/TimeHelpers.js"
 import JSON5 from "json5"
 
 
@@ -22,10 +25,10 @@ export class Application extends Component {
     mode                : 'text' | 'diff'       = 'text'
 
     @field()
-    leftText            : string                = undefined
+    leftText            : string                = ''
 
     @field()
-    rightText           : string                = undefined
+    rightText           : string                = ''
 
     @field({ lazy : false })
     value1              : Value                 = undefined
@@ -64,33 +67,59 @@ export class Application extends Component {
     renderTextContent () : Element {
         return <>
             <div class="jd-content-left">
-                <textarea on:change={ (e : Event) => this.leftText = (e.target as HTMLTextAreaElement).value }></textarea>
+                <textarea
+                    on:change={ (e : Event) => this.leftText = (e.target as HTMLTextAreaElement).value }
+                    on:input={ buffer((e : Event) => this.leftText = (e.target as HTMLTextAreaElement).value, 250) }
+                >
+                    { this.$.leftText }
+                </textarea>
             </div>
             <div class="jd-content-middle">
             </div>
             <div class="jd-content-right">
-                <textarea on:change={ (e : Event) => this.rightText = (e.target as HTMLTextAreaElement).value }></textarea>
+                <textarea
+                    on:change={ (e : Event) => this.rightText = (e.target as HTMLTextAreaElement).value }
+                    on:input={ buffer((e : Event) => this.rightText = (e.target as HTMLTextAreaElement).value, 250) }
+                >
+                    { this.$.rightText }
+                </textarea>
             </div>
         </>
     }
 
 
     renderDiffContent () : Element {
-        return <div></div>
+        return JsonDeepDiffComponent.new({
+            // @ts-ignore - we know the values are valid json at this point
+            difference      : compareDeepDiff(this.value1.value, this.value2.value)
+        }).el
     }
 
 
     render () : Element {
         return <div class="jd-application">
-            <div class="jd-header">header</div>
+            <div class="jd-header">
+                {
+                    () => this.mode === 'diff'
+                        ? <button on:click={ () => this.mode = 'text' } class='fa-btn fa-keyboard'>Text</button>
+                        : <button
+                            disabled={ () => this.hasBothValidValues ? undefined : true }
+                            on:click={ () => this.hasBothValidValues ? this.mode = 'diff' : undefined }
+                            class='fa-btn fa-not-equal'
+                        >
+                            Diff
+                        </button>
+
+                }
+            </div>
             <div class="jd-content">
                 {
-                    this.hasBothValidValues && this.mode === 'diff'
+                    () => this.mode === 'diff'
                         ? this.renderDiffContent()
                         : this.renderTextContent()
                 }
             </div>
-            <div class="jd-footer">footer</div>
+            <div class="jd-footer">© Nickolay Platonov 2022</div>
         </div>
     }
 

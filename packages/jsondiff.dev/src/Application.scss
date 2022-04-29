@@ -5,7 +5,7 @@
     flex-direction: column;
 
     .jd-header {
-
+        padding : 1em;
     }
 
     .jd-content {
@@ -26,5 +26,15 @@
     }
 
     .jd-footer {
+        padding : 0.3em;
+        font-size: smaller;
+        text-align: right;
     }
+}
+
+
+button.fa-btn:before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    padding-right: 0.3em;
 }

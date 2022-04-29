@@ -1,6 +1,7 @@
 @use './palette.scss';
 @use '../../src/Application.scss';
 
+@import '../fonts/fontawesome5/css/all.css';
 
 // region reset
 html, body {
@@ -8,6 +9,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    position: relative;
 
     font-family: "Lato Light";
 }
