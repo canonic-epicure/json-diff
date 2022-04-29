@@ -67,22 +67,26 @@ export class Application extends Component {
     renderTextContent () : Element {
         return <>
             <div class="jd-content-left">
-                <textarea
+                <textarea spellcheck={ false }
                     on:change={ (e : Event) => this.leftText = (e.target as HTMLTextAreaElement).value }
                     on:input={ buffer((e : Event) => this.leftText = (e.target as HTMLTextAreaElement).value, 250) }
                 >
                     { this.$.leftText }
                 </textarea>
+                <div class='jd-json-error-indicator'>
+
+                </div>
             </div>
             <div class="jd-content-middle">
             </div>
             <div class="jd-content-right">
-                <textarea
+                <textarea spellcheck={ false }
                     on:change={ (e : Event) => this.rightText = (e.target as HTMLTextAreaElement).value }
                     on:input={ buffer((e : Event) => this.rightText = (e.target as HTMLTextAreaElement).value, 250) }
                 >
                     { this.$.rightText }
                 </textarea>
+                <div class='jd-json-error-indicator'></div>
             </div>
         </>
     }
@@ -101,14 +105,22 @@ export class Application extends Component {
             <div class="jd-header">
                 {
                     () => this.mode === 'diff'
-                        ? <button on:click={ () => this.mode = 'text' } class='fa-btn fa-keyboard'>Text</button>
-                        : <button
-                            disabled={ () => this.hasBothValidValues ? undefined : true }
-                            on:click={ () => this.hasBothValidValues ? this.mode = 'diff' : undefined }
-                            class='fa-btn fa-not-equal'
-                        >
-                            Diff
-                        </button>
+                        ? <button on:click={ () => this.mode = 'text' } class='fa-btn fa-keyboard btn-text'>Back to text</button>
+                        : <>
+                            <button
+                                disabled={ () => this.hasBothValidValues ? undefined : true }
+                                on:click={ () => this.hasBothValidValues ? this.mode = 'diff' : undefined }
+                                class='fa-btn fa-not-equal btn-diff'
+                            >
+                                Show me the diff
+                            </button>
+                            <button
+                                on:click={ () => this.onSampleDataClick() }
+                                class='fa-btn fa-file-import btn-sample-data'
+                            >
+                                Sample data
+                            </button>
+                        </>
 
                 }
             </div>
@@ -124,4 +136,10 @@ export class Application extends Component {
     }
 
 
+    onSampleDataClick () {
+        this.leftText = '{ commonKey: 1, leftOnlyKey : 2 }'
+        this.rightText = '{ commonKey: 1, rightOnlyKey : 2 }'
+
+        this.mode = 'diff'
+    }
 }

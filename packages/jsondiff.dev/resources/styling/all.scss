@@ -1,4 +1,6 @@
-@use './palette.scss';
+@use "sass:color";
+@use './palette.scss' as *;
+@use './button.scss';
 @use '../../src/Application.scss';
 
 @import '../fonts/fontawesome5/css/all.css';
@@ -12,7 +14,15 @@ html, body {
     position: relative;
 
     font-family: "Lato Light";
+    color: $rich-black-fogra-29;
 }
+
+//button:disabled {
+//    color: color.scale($rich-black-fogra-29, $lightness: 75%);
+//}
+//button {
+//    color: $rich-black-fogra-29;
+//}
 // endregion
 
 

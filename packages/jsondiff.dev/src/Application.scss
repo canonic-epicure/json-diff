@@ -1,3 +1,5 @@
+@use '../resources/styling/palette.scss' as *;
+
 .jd-application {
     height: 100%;
 
@@ -5,7 +7,7 @@
     flex-direction: column;
 
     .jd-header {
-        padding : 1em;
+        padding: 1em;
     }
 
     .jd-content {
@@ -16,25 +18,49 @@
             flex: 1;
             display: flex;
             align-items: stretch;
+            position: relative;
 
             & textarea {
                 font-family: "JetBrainsMono Light", "monospace";
                 flex: 1;
                 resize: none;
+                outline-style: none;
+
+                &:focus {
+                    border-style: dashed;
+                }
             }
+        }
+
+        .jd-json-error-indicator {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: -1;
         }
     }
 
     .jd-footer {
-        padding : 0.3em;
+        padding: 0.3em;
         font-size: smaller;
         text-align: right;
     }
 }
 
 
-button.fa-btn:before {
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    padding-right: 0.3em;
+.btn-sample-data {
+    font-size: medium;
+
+    float: right;
+}
+
+
+.btn-diff, .btn-text {
+    font-size: medium;
+
+    &:before {
+        color: $viridian-green;
+    }
 }
