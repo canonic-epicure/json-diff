@@ -64,6 +64,20 @@ export class Application extends Component {
     }
 
 
+    jsonErrorIndicatorLeft (value : Value) {
+        if (value.kind !== "invalid") return 0
+
+        return `${ value.col - 1 + 0.5 }ch`
+    }
+
+
+    jsonErrorIndicatorTop (value : Value) {
+        if (value.kind !== "invalid") return 0
+
+        return `${ value.line - 1 + 0.5 }em`
+    }
+
+
     renderTextContent () : Element {
         return <>
             <div class="jd-content-left">
@@ -73,8 +87,12 @@ export class Application extends Component {
                 >
                     { this.$.leftText }
                 </textarea>
-                <div class='jd-json-error-indicator'>
-
+                <div
+                    class='jd-json-error-indicator'
+                    style:display={ () => this.value1.kind === "invalid" ? 'block' : 'none' }
+                    style:left={ () => this.jsonErrorIndicatorLeft(this.value1) }
+                    style:top={ () => this.jsonErrorIndicatorTop(this.value1) }
+                >
                 </div>
             </div>
             <div class="jd-content-middle">
@@ -86,7 +104,11 @@ export class Application extends Component {
                 >
                     { this.$.rightText }
                 </textarea>
-                <div class='jd-json-error-indicator'></div>
+                <div class='jd-json-error-indicator'
+                    style:display={ () => this.value2.kind === "invalid" ? 'block' : 'none' }
+                    style:left={ () => this.jsonErrorIndicatorLeft(this.value2) }
+                    style:top={ () => this.jsonErrorIndicatorTop(this.value2) }
+                ></div>
             </div>
         </>
     }

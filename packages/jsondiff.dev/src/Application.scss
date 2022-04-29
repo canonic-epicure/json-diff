@@ -13,6 +13,7 @@
     .jd-content {
         flex: 1;
         display: flex;
+        padding: 1em;
 
         .jd-content-left, .jd-content-right {
             flex: 1;
@@ -34,11 +35,21 @@
 
         .jd-json-error-indicator {
             position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            z-index: -1;
+            width: 3ch;
+            height: 3ch;
+            border: 1px solid $rust;
+            border-radius: 50%;
+            pointer-events: none;
+            user-select: none;
+            transform: translate(-50%, -50%);
+
+            animation: error-indicator 2s;
+            animation-iteration-count: infinite;
+
+            @keyframes error-indicator {
+              from { border-color: rgba($alloy-orange, 0.5); border-width: 1px; }
+              to   { border-color: transparent; border-width: 1.5ch; }
+            }
         }
     }
 
