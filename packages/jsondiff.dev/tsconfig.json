@@ -9,8 +9,8 @@
         "strictPropertyInitialization" : false,
 
         "jsx"                       : "react",
-        "jsxFactory"                : "ChronoGraphJSX.createElement",
-        "jsxFragmentFactory"        : "ChronoGraphJSX.FragmentSymbol",
+        "jsxFactory"                : "TextJSX.createElement",
+        "jsxFragmentFactory"        : "TextJSX.Fragment",
 
         "target"                    : "es2017",
         "sourceMap"                 : false,
