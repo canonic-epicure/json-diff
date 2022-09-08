@@ -153,7 +153,10 @@ export class Application extends Component {
                         : this.renderTextContent()
                 }
             </div>
-            <div class="jd-footer">© Nickolay Platonov 2022</div>
+            <div class="jd-footer">
+                <div class="jd-footer-about" style="flex: 1"><a href="./about.html" title="About this tool">About</a></div>
+                <div class="jd-footer-copyright" style="flex: 1">© Nickolay Platonov 2022</div>
+            </div>
         </div>
     }
 

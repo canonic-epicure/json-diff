@@ -56,7 +56,13 @@
     .jd-footer {
         padding: 0.3em;
         font-size: smaller;
-        text-align: right;
+        display: flex;
+
+        .jd-footer-copyright {
+            text-align: right;
+        }
+
+        .jd-footer-about {}
     }
 }
 
