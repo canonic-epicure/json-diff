@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link type="text/css" rel="stylesheet" href="../resources/styling/all.css">
+        <link type="text/css" rel="stylesheet" href="../resources/styling/about.css">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWVR5G3VR2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || []
+            function gtag() { dataLayer.push(arguments) }
+            gtag('js', new Date())
+
+            gtag('config', 'G-CWVR5G3VR2')
+        </script>
+    </head>
+
+    <body>
+        <a href="/"><h1>JSONDiff.dev</h1></a>
+        <p>
+            This website hosts an extraction from the <a href="https://siesta.works">Siesta's</a> testing tool codebase -
+            a single widget, which provides a deep diff for the 2 pieces of JSON data.
+        </p>
+        <p>
+            The JSON diff is performed by walking both data pieces in-depth, and generating 2 "diff trees", containing the
+            information from both left and right sides, so that the representation of the trees aligns horizontally.
+            This provides an excellent readability of the diff.
+        </p>
+        <p>
+            Circular references in the JSON data are correctly supported, so in general, this tool support a
+            deep diff for the arbitrary JavaScript objects, not just JSON.
+            However, right now it's not possible to enter such data.
+        </p>
+        <p>
+            I hope this tool will be useful for someone. If you have found a bug, or have any other feedback, please
+            <a href="https://github.com/canonic-epicure/json-diff/issues">file an issue</a>
+            on <a href="https://github.com/canonic-epicure/json-diff">github</a>.
+        </p>
+        <p>
+            Enjoy <span style="font-size: larger">☺</span>
+        </p>
+    </body>
+</html>
