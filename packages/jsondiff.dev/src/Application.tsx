@@ -1,3 +1,6 @@
+/** @jsx ChronoGraphJSX.createElement */
+/** @jsxFrag ChronoGraphJSX.FragmentSymbol */
+
 import { calculate, field } from "@bryntum/chronograph/src/replica2/Entity.js"
 import { ChronoGraphJSX } from "@bryntum/siesta/src/chronograph-jsx/ChronoGraphJSX.js"
 import { Component } from "@bryntum/siesta/src/chronograph-jsx/Component.js"
@@ -6,6 +9,8 @@ import { JsonDeepDiffComponent } from "@bryntum/siesta/src/compare_deep/JsonDeep
 import { buffer }  from "@bryntum/siesta/src/util/TimeHelpers.js"
 import JSON5 from "json5"
 
+
+ChronoGraphJSX
 
 type Value = {
     kind        : 'empty'
@@ -50,6 +55,10 @@ export class Application extends Component {
 
     get hasBothValidValues () : boolean {
         return this.value1.kind === 'valid' && this.value2.kind === 'valid'
+    }
+
+    get hasInvalidValue () : boolean {
+        return this.value1.kind === 'invalid' || this.value2.kind === 'invalid'
     }
 
 
@@ -136,6 +145,9 @@ export class Application extends Component {
                             >
                                 Show me the diff
                             </button>
+                            {
+                                this.hasInvalidValue ? <span class='jd-invalid-json-notice'>Invalid JSON</span> : null
+                            }
                             <button
                                 on:click={ () => this.onSampleDataClick() }
                                 class='fa-btn fa-file-import btn-sample-data'
@@ -162,8 +174,8 @@ export class Application extends Component {
 
 
     onSampleDataClick () {
-        this.leftText = '{ commonKey: 1, leftOnlyKey : 2 }'
-        this.rightText = '{ commonKey: 1, rightOnlyKey : 2 }'
+        this.leftText = JSON.stringify({ commonKey: 'commonValue', commonKey1: 'left value', leftOnlyKey : 'left value' })
+        this.rightText = JSON.stringify({ commonKey: 'commonValue', commonKey1: 'right value', rightOnlyKey : 'right value' })
 
         this.mode = 'diff'
     }

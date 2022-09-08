@@ -7,13 +7,19 @@
     flex-direction: column;
 
     .jd-header {
-        padding: 1em;
+        padding: 0.5em;
+
+        .jd-invalid-json-notice {
+            padding-left: 2ch;
+            color: $alloy-orange;
+            font-weight: bolder;
+        }
     }
 
     .jd-content {
         flex: 1;
         display: flex;
-        padding: 1em;
+        padding: 0.5em;
 
         .jd-content-left, .jd-content-right {
             flex: 1;
@@ -43,11 +49,12 @@
             user-select: none;
             transform: translate(-50%, -50%);
 
-            animation: error-indicator 2s;
+            animation: error-indicator 2.5s;
             animation-iteration-count: infinite;
+            animation-timing-function: ease-out;
 
             @keyframes error-indicator {
-              from { border-color: rgba($alloy-orange, 0.5); border-width: 1px; }
+              from { border-color: rgba($alloy-orange, 0.4); border-width: 1px; }
               to   { border-color: transparent; border-width: 1.5ch; }
             }
         }
@@ -69,6 +76,7 @@
 
 .btn-sample-data {
     font-size: medium;
+    padding: 0.5em;
 
     float: right;
 }
@@ -76,6 +84,7 @@
 
 .btn-diff, .btn-text {
     font-size: medium;
+    padding: 0.5em;
 
     &:before {
         color: $viridian-green;
