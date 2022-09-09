@@ -174,8 +174,19 @@ export class Application extends Component {
 
 
     onSampleDataClick () {
-        this.leftText = JSON.stringify({ commonKey: 'commonValue', commonKey1: 'left value', leftOnlyKey : 'left value' })
-        this.rightText = JSON.stringify({ commonKey: 'commonValue', commonKey1: 'right value', rightOnlyKey : 'right value' })
+        this.leftText = JSON.stringify({
+            commonKey       : 'commonValue',
+            commonKey1      : 'left value',
+            leftOnlyKey     : 'left value',
+            commonArray     : [ 1, 2, 3 ]
+        })
+
+        this.rightText = JSON.stringify({
+            commonKey       : 'commonValue',
+            commonKey1      : 'right value',
+            rightOnlyKey    : 'right value',
+            commonArray     : [ 1, 2.5, 3 ]
+        })
 
         this.mode = 'diff'
     }
