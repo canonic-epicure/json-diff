@@ -27,15 +27,14 @@
         <p>
             The JSON diff is performed by walking both data pieces in-depth, and generating 2 "diff trees", containing the
             information from both left and right sides, so that the representation of the trees aligns horizontally.
-            This provides an excellent readability of the diff.
+            This provides a good readability of the diff.
         </p>
         <p>
-            Circular references in the JSON data are correctly supported, so in general, this tool support a
-            deep diff for the arbitrary JavaScript objects, not just JSON.
-            However, right now it's not possible to enter such data.
+            In general, this tool supports deep diff for the arbitrary JavaScript objects, not just JSON.
+            This includes circular references, Map, Set, Date instances etc. However, right now it's not possible to enter such data.
         </p>
         <p>
-            I hope this tool will be useful for someone. If you have found a bug, or have any other feedback, please
+            I hope this tool will be useful. If you have found a bug, or have any feedback, please
             <a href="https://github.com/canonic-epicure/json-diff/issues">file an issue</a>
             on <a href="https://github.com/canonic-epicure/json-diff">github</a>.
         </p>
